@@ -1,7 +1,15 @@
 import chalk from "chalk";
 import debugLib from "debug";
 
-export const instantiateLogger = () => (label: string) => {
+export type LoggerFunction = (text: string) => void;
+export interface Logger {
+  info: LoggerFunction;
+  warn: LoggerFunction;
+  error: LoggerFunction;
+  success: LoggerFunction;
+}
+
+export const instantiateLogger = (label: string): Logger => {
   const debug = debugLib(`advent-2020-ts:${label}`);
   return {
     info: (text: string) => debug(chalk.blue(text)),
@@ -10,5 +18,3 @@ export const instantiateLogger = () => (label: string) => {
     success: (text: string) => debug(chalk.green(text)),
   };
 };
-
-export type Logger = ReturnType<ReturnType<typeof instantiateLogger>>;

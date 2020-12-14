@@ -1,0 +1,136 @@
+{
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "extends": [
+    "eslint:recommended",
+    // "plugin:prettier/recommended",
+    "airbnb-typescript",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {},
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-member-accessibility": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/quotes": [
+      "error",
+      "double"
+    ],
+    "quotes": "off",
+    "indent": [
+      "error",
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "operator-linebreak": [
+      "error",
+      "before",
+      {
+        "overrides": {
+          "||": "after",
+          "&&": "after",
+          "=": "after"
+        }
+      }
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 120
+      }
+    ],
+    "spaced-comment": [
+      "error",
+      "always",
+      {
+        "markers": [
+          "/"
+        ]
+      }
+    ],
+    "no-continue": "off",
+    "no-plusplus": "off",
+    "object-curly-newline": "off",
+    "no-confusing-arrow": "off",
+    "no-restricted-syntax": "off", // TODO: just for iterators (case-by-case basis)
+    "arrow-parens": [
+      "error",
+      "as-needed"
+    ],
+    "implicit-arrow-linebreak": "off",
+    "no-nested-ternary": [
+      "off"
+    ],
+    "import/prefer-default-export": [
+      "off"
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [
+          [
+            "@",
+            "./"
+          ]
+        ],
+        "extensions": [
+          ".ts",
+          ".js",
+          ".tsx",
+          ".jsx",
+          ".json"
+        ]
+      }
+    }
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/*.d.ts"
+      ],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "off"
+      }
+    },
+    {
+      "files": [
+        "**/*.js"
+      ],
+      "rules": {
+        "@typescript-eslint/no-var-requires": "off"
+      }
+    }
+  ]
+}

@@ -2,7 +2,7 @@ import { instantiateLogger } from "../utils/logger";
 import { runWithScaffolding } from "../utils/scaffolding";
 
 export const computePartOne = (
-  inputs: readonly number[]
+  inputs: readonly number[],
 ): number | null => {
   for (let i = 0; i < inputs.length; i++) {
     for (let j = 0; j < inputs.length; j++) {
@@ -33,7 +33,7 @@ runWithScaffolding(
   "part-1",
   "./src/day-1/input.txt",
   "\n",
-  instantiateLogger()("day-1"),
+  instantiateLogger("day-1"),
   async inputs => {
     const results = [
       computePartOne(inputs),
