@@ -3,6 +3,9 @@ import { performance } from "perf_hooks";
 
 import { Logger } from "./logger";
 
+export const isDefined = <T>(value: T | null | undefined): value is T =>
+  value !== null && value !== undefined;
+
 export const loadInputsFromFile = async (
   filepath: string,
   separator: string,
@@ -11,13 +14,13 @@ export const loadInputsFromFile = async (
   return raw.split(separator).map(Number).filter(Number.isSafeInteger);
 };
 
-export const runWithScaffolding = async (
+export const withScaffolding = (
   label: string,
   inputsFilepath: string,
   inputsSeparator: string,
   logger: Logger,
   compute: (inputs: readonly number[]) => Promise<readonly number[]>,
-): Promise<void> => {
+) => async (): Promise<void> => {
   logger.info(`${label}: parsing inputs file ${inputsFilepath}...`);
   const inputs = await loadInputsFromFile(inputsFilepath, inputsSeparator);
   logger.success("> Parsing done!");

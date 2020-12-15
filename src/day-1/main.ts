@@ -1,5 +1,5 @@
 import { instantiateLogger } from "../utils/logger";
-import { runWithScaffolding } from "../utils/scaffolding";
+import { isDefined, withScaffolding } from "../utils/scaffolding";
 
 export const computePartOne = (
   inputs: readonly number[],
@@ -29,19 +29,21 @@ export const computePartTwo = (
   return null;
 };
 
-runWithScaffolding(
+const runDayOne = withScaffolding(
   "part-1",
   "./src/day-1/input.txt",
   "\n",
   instantiateLogger("day-1"),
   async inputs => {
-    const results = [
+    const results: readonly number[] = [
       computePartOne(inputs),
       computePartTwo(inputs),
-    ].filter(Number.isSafeInteger) as readonly number[];
+    ].filter(isDefined);
     if (results.length < 1) {
       throw new Error("No results found!");
     }
     return results;
   },
 );
+
+export default runDayOne;

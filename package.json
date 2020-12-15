@@ -8,7 +8,7 @@
   "scripts": {
     "test": "npx jest",
     "lint": "npx eslint --ignore-path .gitignore --ext .js --ext .jsx --ext .ts --ext .tsx .",
-    "main": "npx cross-env DEBUG=advent-2020-ts:* npx ts-node ./src/day-1/main.ts"
+    "main": "npx cross-env DEBUG=advent-2020-ts:* npx ts-node ./src/entry.ts"
   },
   "dependencies": {
     "chalk": "^4.1.0",
