@@ -4,12 +4,13 @@ import { isDefined, withScaffolding } from "../utils/scaffolding";
 export const computePartOne = (
   inputs: readonly number[],
 ): number | null => {
-  for (let i = 0; i < inputs.length; i++) {
-    for (let j = 0; j < inputs.length; j++) {
-      const [x, y] = [inputs[i], inputs[j]];
-      if (x + y !== 2020) { continue; }
-      return x * y;
+  const seen = new Set<number>();
+  for (const n of inputs) {
+    const comp = 2020 - n;
+    if(seen.has(comp)) {
+      return n * comp;
     }
+    seen.add(n);
   }
   return null;
 };
